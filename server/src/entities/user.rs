@@ -18,9 +18,9 @@ pub struct User {
 }
 
 impl User {
-    pub fn new(id: String) -> Self {
+    pub fn new() -> Self {
         Self {
-            id,
+            id: String::new(),
             username: String::new(),
             nickname: String::new(),
             created_at: String::new(),
@@ -92,15 +92,25 @@ pub enum EnabledFeatures {}
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 pub enum DisabledFeatures {}
 
-
 #[cfg(test)]
 mod tests {
     use super::*;
 
     #[test]
     fn test_user() {
-        let user = User::new(String::from("123"));
-        assert_eq!(user.id, "123");
+        let user = User::new();
+        assert_eq!(user.id, String::new());
+        assert_eq!(user.username, String::new());
+        assert_eq!(user.nickname, String::new());
+        assert_eq!(user.created_at, String::new());
+        assert_eq!(user.updated_at, String::new());
+        assert_eq!(user.gender, String::new());
+        assert_eq!(user.birthday, String::new());
+        assert_eq!(user.avatar, Avatar::new());
+        assert_eq!(user.stats_count, StatsCount::new());
+        assert_eq!(user.preferences, Preferences::new());
+        assert_eq!(user.enabled_features, Vec::new());
+        assert_eq!(user.disabled_features, Vec::new());
     }
 
     #[test]

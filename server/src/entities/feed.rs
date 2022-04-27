@@ -20,7 +20,7 @@ impl Feed {
     pub fn new() -> Self {
         Self {
             id: String::new(),
-            user: User::new(String::from("123")),
+            user: User::new(),
             content: String::new(),
             created_at: String::new(),
             liked: false,
@@ -115,16 +115,15 @@ impl From<&str> for FeedType {
     }
 }
 
-
 #[cfg(test)]
 mod tests {
     use super::*;
 
     #[test]
-    fn test_feed(){
+    fn test_feed() {
         let feed = Feed::new();
         assert_eq!(feed.id, String::from(""));
-        assert_eq!(feed.user, User::new(String::from("123")));
+        assert_eq!(feed.user, User::new());
         assert_eq!(feed.content, String::from(""));
         assert_eq!(feed.created_at, String::from(""));
         assert_eq!(feed.liked, false);
