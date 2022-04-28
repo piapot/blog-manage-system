@@ -2,16 +2,20 @@ use serde::{Deserialize, Serialize};
 
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 pub struct Topic {
-    pub id: String,         // 唯一标识
-    pub topic_name: String, // 话题名称
+    pub id: String,          // 唯一标识
+    pub topic_name: String,  // 话题名称
+    pub description: String, // 话题描述
 }
 
 impl Topic {
-    pub fn new(id: String, topic_name: String) -> Self {
-        Self { id, topic_name }
+    pub fn new() -> Self {
+        Self {
+            id: String::new(),
+            topic_name: String::new(),
+            description: String::new(),
+        }
     }
 }
-
 
 #[cfg(test)]
 mod tests {
@@ -19,8 +23,9 @@ mod tests {
 
     #[test]
     fn test_topic() {
-        let topic = Topic::new(String::from("123"), String::from("topic_name"));
-        assert_eq!(topic.id, "123");
-        assert_eq!(topic.topic_name, "topic_name");
+        let topic = Topic::new();
+        assert_eq!(topic.id, String::new());
+        assert_eq!(topic.topic_name, String::new());
+        assert_eq!(topic.description, String::new());
     }
 }
