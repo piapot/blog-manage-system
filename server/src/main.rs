@@ -2,10 +2,10 @@ use axum::{Router, Server};
 use dotenv::dotenv;
 use std::env;
 
-use server::routes;
+use server::{ routes};
 
 #[tokio::main]
-async fn main() {
+async fn main() -> anyhow::Result<()> {
     dotenv().ok();
     tracing_subscriber::fmt::init();
 
@@ -16,8 +16,9 @@ async fn main() {
     let app = Router::new().nest("/api", routes());
 
     tracing::info!("listening on http://{}", addr);
-    Server::bind(&addr.parse().unwrap())
+    Server::bind(&addr.parse()?)
         .serve(app.into_make_service())
-        .await
-        .unwrap();
+        .await?;
+
+    Ok(())
 }

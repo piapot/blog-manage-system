@@ -115,6 +115,7 @@ impl From<&str> for FeedType {
     }
 }
 
+
 #[cfg(test)]
 mod tests {
     use super::*;

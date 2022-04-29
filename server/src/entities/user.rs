@@ -4,7 +4,6 @@ use serde::{Deserialize, Serialize};
 pub struct User {
     pub id: String,                               // 唯一标识
     pub username: String,                         // 用户名（加密），用于资料查询
-    pub password: String,                         // 密码（加密），用于登录
     pub nickname: String,                         // 昵称
     pub created_at: String,                       // 创建时间
     pub updated_at: String,                       // 更新时间
@@ -24,7 +23,6 @@ impl User {
             id: String::new(),
             username: String::new(),
             nickname: String::new(),
-            password: String::new(),
             created_at: String::new(),
             updated_at: String::new(),
             gender: String::new(),
@@ -104,7 +102,6 @@ mod tests {
         assert_eq!(user.id, String::new());
         assert_eq!(user.username, String::new());
         assert_eq!(user.nickname, String::new());
-        assert_eq!(user.password, String::new());
         assert_eq!(user.created_at, String::new());
         assert_eq!(user.updated_at, String::new());
         assert_eq!(user.gender, String::new());
