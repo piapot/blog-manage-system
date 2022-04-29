@@ -477,6 +477,7 @@ dependencies = [
  "dotenv",
  "lazy_static",
  "serde",
+ "serde_json",
  "tokio",
  "tracing",
  "tracing-subscriber",

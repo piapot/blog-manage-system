@@ -1,5 +1,15 @@
-use axum::{routing::get, Router};
+mod register;
+
+use self::register::Register;
+
+use axum::Router;
+
+trait Controller {
+    fn controller() -> Router;
+}
 
 pub fn routes() -> Router {
-    Router::new().route("/", get(|| async { "Hello World!" }))
+    let router = Router::new();
+
+    router.merge(Register::controller())
 }

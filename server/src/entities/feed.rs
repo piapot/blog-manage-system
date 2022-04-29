@@ -1,4 +1,4 @@
-use crate::entities::{topic::Topic, user::User};
+use super::{topic::Topic, user::User};
 use serde::{Deserialize, Serialize};
 
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
