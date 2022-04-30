@@ -1,12 +1,17 @@
 import type { NextPage } from "next"
+import { TopBar } from "@/components"
+import { SideBar, Home, Trend } from "@/widgets"
 
 const Index: NextPage = () => {
   return (
-    <main display='flex' flex='col' min-h='screen' w='screen' justify='center' items='center'>
-      <button text='3xl blue-500 active:yellow-500' cursor='pointer'>
-        Hello World!
-      </button>
-    </main>
+    <div className='flex flex-col min-h-screen flex-1 w-full'>
+      <TopBar />
+      <div className='flex bg-gray-200 flex-1 px-9 pt-4 justify-center'>
+        <SideBar />
+        <Home />
+        <Trend />
+      </div>
+    </div>
   )
 }
 
