@@ -1,0 +1,3 @@
+.card {
+  @apply bg-white rounded-t-xl flex flex-col h-[calc(100vh-5rem)] shadow-lg p-4 pb-0 top-20 shadow-gray-300 w-24 w-1/4 sticky;
+}
