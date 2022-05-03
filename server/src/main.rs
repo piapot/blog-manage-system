@@ -2,7 +2,7 @@ use axum::{Router, Server};
 use dotenv::dotenv;
 use std::env;
 
-use server::{ routes};
+use server::routes;
 
 #[tokio::main]
 async fn main() -> anyhow::Result<()> {
@@ -21,4 +21,16 @@ async fn main() -> anyhow::Result<()> {
         .await?;
 
     Ok(())
+}
+
+#[cfg(test)]
+mod tests {
+    use rusqlite::Connection;
+
+    #[test]
+    fn test_connect_db() -> anyhow::Result<()> {
+        let _conn = Connection::open_in_memory()?;
+
+        Ok(())
+    }
 }
