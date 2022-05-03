@@ -1,3 +1,13 @@
 {
-  "cSpell.words": ["dotenv", "rusqlite", "unocss", "vite", "vitejs"]
+  "cSpell.words": [
+    "attributify",
+    "dotenv",
+    "Parens",
+    "rusqlite",
+    "unocss",
+    "vite",
+    "vitejs",
+    "windi",
+    "windicss"
+  ]
 }
