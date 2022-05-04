@@ -7,6 +7,12 @@ pub enum Role {
     Visitor,
 }
 
+impl Default for Role {
+    fn default() -> Self {
+        Self::Visitor
+    }
+}
+
 impl From<&str> for Role {
     fn from(role: &str) -> Self {
         use Role::*;

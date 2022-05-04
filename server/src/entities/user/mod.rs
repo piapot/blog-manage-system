@@ -1,6 +1,6 @@
 use serde::{Deserialize, Serialize};
 
-#[derive(Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct User {
     pub id: String,                               // 唯一标识
     pub username: String,                         // 用户名（加密），用于资料查询
@@ -19,25 +19,11 @@ pub struct User {
 
 impl User {
     pub fn new() -> Self {
-        Self {
-            id: String::new(),
-            username: String::new(),
-            nickname: String::new(),
-            created_at: String::new(),
-            updated_at: String::new(),
-            gender: String::new(),
-            birthday: String::new(),
-            brief_intro: String::new(),
-            avatar: Avatar::new(),
-            stats_count: StatsCount::new(),
-            preferences: Preferences::new(),
-            enabled_features: Vec::new(),
-            disabled_features: Vec::new(),
-        }
+        Self::default()
     }
 }
 
-#[derive(Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct Avatar {
     pub url: String,    // 头像地址
     pub width: u32,     // 头像宽度
@@ -47,16 +33,11 @@ pub struct Avatar {
 
 impl Avatar {
     pub fn new() -> Self {
-        Self {
-            url: String::new(),
-            width: 0,
-            height: 0,
-            format: String::new(),
-        }
+        Self::default()
     }
 }
 
-#[derive(Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct StatsCount {
     pub following_count: usize,  // 关注数
     pub followed_count: usize,   // 被关注数
@@ -67,22 +48,16 @@ pub struct StatsCount {
 
 impl StatsCount {
     pub fn new() -> Self {
-        Self {
-            following_count: 0,
-            followed_count: 0,
-            liked: 0,
-            topic_created: 0,
-            topic_subscribed: 0,
-        }
+        Self::default()
     }
 }
 
-#[derive(Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct Preferences {}
 
 impl Preferences {
     pub fn new() -> Self {
-        Self {}
+        Self::default()
     }
 }
 

@@ -1,7 +1,7 @@
 use super::{topic::Topic, user::User};
 use serde::{Deserialize, Serialize};
 
-#[derive(Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct Feed {
     pub id: String,                      // 唯一标识
     pub user: User,                      // 用户信息
@@ -18,23 +18,11 @@ pub struct Feed {
 
 impl Feed {
     pub fn new() -> Self {
-        Self {
-            id: String::new(),
-            user: User::new(),
-            content: String::new(),
-            created_at: String::new(),
-            liked: false,
-            feed_type: FeedType::OriginalFeed,
-            stats_count: StatsCount::new(),
-            pictures: Vec::new(),
-            urls_in_text: Vec::new(),
-            target_feed: None,
-            topic: None,
-        }
+        Self::default()
     }
 }
 
-#[derive(Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct Picture {
     pub url: String,    // 图片地址
     pub width: u32,     // 图片宽度
@@ -44,16 +32,11 @@ pub struct Picture {
 
 impl Picture {
     pub fn new() -> Self {
-        Self {
-            url: String::new(),
-            width: 0,
-            height: 0,
-            format: String::new(),
-        }
+        Self::default()
     }
 }
 
-#[derive(Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct TargetFeed {
     pub id: String,          // 唯一标识
     pub feed_type: FeedType, // 目标帖子类型
@@ -61,14 +44,11 @@ pub struct TargetFeed {
 
 impl TargetFeed {
     pub fn new() -> Self {
-        Self {
-            id: String::new(),
-            feed_type: FeedType::OriginalFeed,
-        }
+        Self::default()
     }
 }
 
-#[derive(Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct StatsCount {
     pub like_count: u32,    // 点赞数
     pub comment_count: u32, // 评论数
@@ -77,15 +57,11 @@ pub struct StatsCount {
 
 impl StatsCount {
     pub fn new() -> Self {
-        Self {
-            like_count: 0,
-            comment_count: 0,
-            share_count: 0,
-        }
+        Self::default()
     }
 }
 
-#[derive(Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct UrlsInText {
     pub original_url: String, // 原始链接
     pub title: String,        // 标题
@@ -93,16 +69,19 @@ pub struct UrlsInText {
 
 impl UrlsInText {
     pub fn new() -> Self {
-        Self {
-            original_url: String::new(),
-            title: String::new(),
-        }
+        Self::default()
     }
 }
 
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 pub enum FeedType {
     OriginalFeed, // 初始帖子，可发送文字、图片、链接
+}
+
+impl Default for FeedType {
+    fn default() -> Self {
+        Self::OriginalFeed
+    }
 }
 
 impl From<&str> for FeedType {
@@ -114,7 +93,6 @@ impl From<&str> for FeedType {
         }
     }
 }
-
 
 #[cfg(test)]
 mod tests {

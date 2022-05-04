@@ -1,11 +1,12 @@
+use server::routes;
+
+use anyhow::Result;
 use axum::{Router, Server};
 use dotenv::dotenv;
 use std::env;
 
-use server::routes;
-
 #[tokio::main]
-async fn main() -> anyhow::Result<()> {
+async fn main() -> Result<()> {
     dotenv().ok();
     tracing_subscriber::fmt::init();
 
@@ -25,11 +26,12 @@ async fn main() -> anyhow::Result<()> {
 
 #[cfg(test)]
 mod tests {
+    use anyhow::Result;
     use rusqlite::Connection;
 
     #[test]
-    fn test_connect_db() -> anyhow::Result<()> {
-        let _conn = Connection::open_in_memory()?;
+    fn test_connect_db() -> Result<()> {
+        let _conn = Connection::open("data.db")?;
 
         Ok(())
     }

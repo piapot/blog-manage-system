@@ -1,6 +1,6 @@
 use serde::{Deserialize, Serialize};
 
-#[derive(Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct Topic {
     pub id: String,          // 唯一标识
     pub topic_name: String,  // 话题名称
@@ -9,11 +9,7 @@ pub struct Topic {
 
 impl Topic {
     pub fn new() -> Self {
-        Self {
-            id: String::new(),
-            topic_name: String::new(),
-            description: String::new(),
-        }
+        Self::default()
     }
 }
 
