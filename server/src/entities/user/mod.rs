@@ -1,3 +1,15 @@
+mod avatar;
+mod disabled_features;
+mod enabled_features;
+mod preferences;
+mod stats_count;
+
+pub use avatar::Avatar;
+pub use disabled_features::DisabledFeatures;
+pub use enabled_features::EnabledFeatures;
+pub use preferences::Preferences;
+pub use stats_count::StatsCount;
+
 use serde::{Deserialize, Serialize};
 
 #[derive(Default, Debug, PartialEq, Serialize, Deserialize)]
@@ -20,90 +32,5 @@ pub struct User {
 impl User {
     pub fn new() -> Self {
         Self::default()
-    }
-}
-
-#[derive(Default, Debug, PartialEq, Serialize, Deserialize)]
-pub struct Avatar {
-    pub url: String,    // 头像地址
-    pub width: u32,     // 头像宽度
-    pub height: u32,    // 头像高度
-    pub format: String, // 头像格式
-}
-
-impl Avatar {
-    pub fn new() -> Self {
-        Self::default()
-    }
-}
-
-#[derive(Default, Debug, PartialEq, Serialize, Deserialize)]
-pub struct StatsCount {
-    pub following_count: usize,  // 关注数
-    pub followed_count: usize,   // 被关注数
-    pub liked: usize,            // 点赞数
-    pub topic_created: usize,    // 发布话题数
-    pub topic_subscribed: usize, // 订阅话题数
-}
-
-impl StatsCount {
-    pub fn new() -> Self {
-        Self::default()
-    }
-}
-
-#[derive(Default, Debug, PartialEq, Serialize, Deserialize)]
-pub struct Preferences {}
-
-impl Preferences {
-    pub fn new() -> Self {
-        Self::default()
-    }
-}
-
-#[derive(Debug, PartialEq, Serialize, Deserialize)]
-pub enum EnabledFeatures {}
-
-#[derive(Debug, PartialEq, Serialize, Deserialize)]
-pub enum DisabledFeatures {}
-
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    fn test_user() {
-        let user = User::new();
-        assert_eq!(user.id, String::new());
-        assert_eq!(user.username, String::new());
-        assert_eq!(user.nickname, String::new());
-        assert_eq!(user.created_at, String::new());
-        assert_eq!(user.updated_at, String::new());
-        assert_eq!(user.gender, String::new());
-        assert_eq!(user.birthday, String::new());
-        assert_eq!(user.avatar, Avatar::new());
-        assert_eq!(user.stats_count, StatsCount::new());
-        assert_eq!(user.preferences, Preferences::new());
-        assert_eq!(user.enabled_features, Vec::new());
-        assert_eq!(user.disabled_features, Vec::new());
-    }
-
-    #[test]
-    fn test_avatar() {
-        let avatar = Avatar::new();
-        assert_eq!(avatar.url, "");
-        assert_eq!(avatar.width, 0);
-        assert_eq!(avatar.height, 0);
-        assert_eq!(avatar.format, "");
-    }
-
-    #[test]
-    fn test_stats_count() {
-        let stats_count = StatsCount::new();
-        assert_eq!(stats_count.following_count, 0);
-        assert_eq!(stats_count.followed_count, 0);
-        assert_eq!(stats_count.liked, 0);
-        assert_eq!(stats_count.topic_created, 0);
-        assert_eq!(stats_count.topic_subscribed, 0);
     }
 }
