@@ -1,28 +1,25 @@
 {
-  "name": "template-next-ts",
-  "version": "0.1.0",
-  "private": true,
+  "name": "client",
+  "type": "module",
+  "version": "0.0.1",
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint",
-    "fmt": "prettier -w **/*.{js,jsx,json,ts,tsx,css}"
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "format": "prettier -w ./src/**/*.{js,jsx,ts,tsx,css,scss,astro} --plugin-search-dir=."
   },
   "dependencies": {
-    "next": "12.1.5",
-    "react": "18.0.0",
-    "react-dom": "18.0.0"
+    "@astrojs/mdx": "^0.17.2",
+    "@astrojs/rss": "^2.1.1",
+    "@astrojs/sitemap": "^1.1.0",
+    "@astrojs/solid-js": "^2.1.0",
+    "astro": "^2.0.18",
+    "solid-js": "^1.4.3"
   },
   "devDependencies": {
-    "@types/node": "17.0.27",
-    "@types/react": "18.0.7",
-    "@types/react-dom": "18.0.0",
-    "eslint": "8.14.0",
-    "eslint-config-next": "12.1.5",
-    "prettier": "^2.6.2",
-    "typescript": "4.6.3",
-    "windicss": "^3.5.1",
-    "windicss-webpack-plugin": "^1.7.2"
+    "prettier": "^2.8.4",
+    "prettier-plugin-astro": "^0.8.0",
+    "sass": "^1.58.3"
   }
 }

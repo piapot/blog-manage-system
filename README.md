@@ -1,1 +1,3 @@
-# blog-manage-system
+# Blog-manage-system
+
+A simple blog manage system.
